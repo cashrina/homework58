@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {User} from '../../types.ts'
 import UserItem from './UserItem.tsx';
 import Modal from "../Modal/Modal.tsx";
+import Alert from "../Alert/Alert.tsx";
 
 interface UserProps {
     userItem: User[];
@@ -9,6 +10,8 @@ interface UserProps {
 
 const Users: React.FC<UserProps> = ({userItem}) => {
     const[showModal, setShowModal] = useState(false);
+    const[showAlert, setShowAlert] = useState(false);
+
     const cart = (
         <div onClick={() => setShowModal(true)}>
             {userItem.map((user) => (
@@ -16,8 +19,12 @@ const Users: React.FC<UserProps> = ({userItem}) => {
             ))}
         </div>
     );
+const closeAlert = () => {
+    setShowAlert(false);
+};
+
     return (
-        <div className="row mb-3">
+        <div className="mb-3 col-12">
             <h4 className="fs-2 mb-5">Users</h4>
             {cart}
             <Modal show={showModal}
@@ -32,6 +39,11 @@ const Users: React.FC<UserProps> = ({userItem}) => {
                     </button>
                 </div>
             </Modal>
+            <Alert
+                type="warning"
+                onDismiss={closeAlert}
+            > This is a warning alert</Alert>
+            <Alert type="success">This is a success type alert</Alert>
         </div>
 
     );

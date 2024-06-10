@@ -31,10 +31,9 @@ const App = () => {
         { id: '12', name: 'Crab', email: 'crab@example.com', active: true, role: 'user', img: Crab },
     ]);
 
-
     return (
         <div className="container">
-            <div className="row justify-content-center">
+            <div className="row justify-content-center col-12 flex-wrap">
                 <div className="col-4">
                     <Users userItem={user}/>
                 </div>
