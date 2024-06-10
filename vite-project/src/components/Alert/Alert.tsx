@@ -7,9 +7,9 @@ interface AlertProps extends React.PropsWithChildren{
 const Alert: React.FC<AlertProps> = ({type, onDismiss, children}) => {
 
     return (
-            <div className={`alert alert-${type}`}>
+            <div className={`alert alert-${type} d-flex align-items-center`} >
                 {children}
-                {onDismiss ? <button>X</button> : null}
+                {onDismiss ? <button className="border-0 bg-transparent ms-auto" style={{cursor: "pointer"}} onClick={onDismiss}>X</button> : null}
             </div>
     );};
 

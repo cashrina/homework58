@@ -10,7 +10,7 @@ interface UserProps {
 
 const Users: React.FC<UserProps> = ({userItem}) => {
     const[showModal, setShowModal] = useState(false);
-    const[showAlert, setShowAlert] = useState(false);
+    const[showAlert, setShowAlert] = useState(true);
 
     const cart = (
         <div onClick={() => setShowModal(true)}>
@@ -19,9 +19,18 @@ const Users: React.FC<UserProps> = ({userItem}) => {
             ))}
         </div>
     );
-const closeAlert = () => {
-    setShowAlert(false);
-};
+
+    const closeAlert = () => {
+        setShowAlert(false);
+    };
+
+    const alert = (
+        <>{showAlert ? (
+            <Alert type="warning" onDismiss={closeAlert}>
+                This is a warning alert
+            </Alert>
+        ) : null} </>
+    );
 
     return (
         <div className="mb-3 col-12">
@@ -39,10 +48,7 @@ const closeAlert = () => {
                     </button>
                 </div>
             </Modal>
-            <Alert
-                type="warning"
-                onDismiss={closeAlert}
-            > This is a warning alert</Alert>
+            {alert}
             <Alert type="success">This is a success type alert</Alert>
         </div>
 
